@@ -58,6 +58,31 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>5.2.2</version>
+		</dependency>
+		
+		<!-- Excel 2007 이상에서 사용하는 XSSF 사용하기 위해 추가 -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>3.11</version> <!-- 적절한 버전을 선택하세요 -->
+		</dependency>
+
+		
+		<!-- FilenameUtils 사용하기 위해 추가(파일 확장자 체크) -->
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.11.0</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
