@@ -70,7 +70,7 @@
 		<dependency>
 		    <groupId>org.apache.poi</groupId>
 		    <artifactId>poi-ooxml</artifactId>
-		    <version>3.11</version> <!-- 적절한 버전을 선택하세요 -->
+		    <version>5.2.2</version> 
 		</dependency>
 
 		
