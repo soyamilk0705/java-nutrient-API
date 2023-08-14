@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.heesoo.nutrient.mapper.NutrientMapper">
+
+	<insert id="insertData" parameterType="NutrientDTO">
+		<![CDATA[
+			INSERT INTO nutrient(
+				id, food_cd, group_name, food_name, research_year, maker_name, ref_name, serving_size, calorie, carbohydrate, protein, province, sugars, salt, cholesterol, saturated_fatty_acids, trans_fat)
+			VALUES(
+				#{id}, #{foodCd}, #{groupName}, #{foodName}, #{researchYear}, #{makerName}, #{refName}, #{servingSize}, #{calorie}, #{carbohydrate}, #{protein}, #{province}, #{sugars}, #{salt}, #{cholesterol}, #{saturatedFattyAcids}, #{transFat})
+		]]>
+	</insert>
+</mapper>
