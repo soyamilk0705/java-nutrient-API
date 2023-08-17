@@ -12,4 +12,15 @@
 				#{id}, #{foodCd}, #{groupName}, #{foodName}, #{researchYear}, #{makerName}, #{refName}, #{servingSize}, #{calorie}, #{carbohydrate}, #{protein}, #{province}, #{sugars}, #{salt}, #{cholesterol}, #{saturatedFattyAcids}, #{transFat})
 		]]>
 	</insert>
+	
+	<!--<select id="search">
+		<![CDATA[
+			SELECT *
+			FROM nutrient
+			WHERE food_name	#{foodName}
+				research_year #{researchYear}
+				maker_name #{makerName}
+				food_code #{foodCode}
+		]]>
+	</select>-->
 </mapper>

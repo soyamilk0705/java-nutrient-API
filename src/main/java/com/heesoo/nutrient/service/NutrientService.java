@@ -80,4 +80,9 @@ public class NutrientService {
 		}
 	
 	}
+	
+	
+	public void search(String foodName, String researchYear, String makerName, String foodCode) {
+		nutrientMapper.search(foodName, researchYear, makerName, foodCode);
+	}
 }
