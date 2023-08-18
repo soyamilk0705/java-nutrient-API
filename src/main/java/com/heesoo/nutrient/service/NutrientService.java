@@ -2,6 +2,9 @@ package com.heesoo.nutrient.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
@@ -47,7 +50,7 @@ public class NutrientService {
 				nutrientDTO.setFoodCd(row.getCell(2).getStringCellValue());
 				nutrientDTO.setGroupName(row.getCell(3).getStringCellValue());
 				nutrientDTO.setFoodName(row.getCell(5).getStringCellValue());
-				nutrientDTO.setResearchYear(Integer.parseInt(row.getCell(6).getStringCellValue()));
+				nutrientDTO.setResearchYear(row.getCell(6).getStringCellValue());
 				nutrientDTO.setMakerName(row.getCell(7).getStringCellValue());
 				nutrientDTO.setRefName(row.getCell(98).getStringCellValue());
 				nutrientDTO.setServingSize(row.getCell(11).getStringCellValue());
@@ -82,7 +85,19 @@ public class NutrientService {
 	}
 	
 	
-	public void search(String foodName, String researchYear, String makerName, String foodCode) {
-		nutrientMapper.search(foodName, researchYear, makerName, foodCode);
+	public List<NutrientDTO> search(String foodName, String researchYear, String makerName, String foodCode, Integer page) {
+		Integer startPage = 10 * page;
+		Integer endPage = 10 * (page + 1) - 1;
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("foodName", foodName);
+		map.put("researchYear", researchYear);
+		map.put("makerName", makerName);
+		map.put("foodCode", foodCode);
+		map.put("startPage", startPage);
+		map.put("endPage", endPage);
+		
+		return nutrientMapper.search(map);
 	}
 }
