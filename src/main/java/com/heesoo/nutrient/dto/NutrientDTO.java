@@ -8,7 +8,7 @@ public class NutrientDTO {
 	private String foodCd;								// 식품코드-식품코드(2)
 	private String groupName;						// 식품군-DB군(3)
 	private String foodName;							// 식품이름-식품명(5)
-	private int researchYear;							// 조사년도-연도(6)
+	private String researchYear;							// 조사년도-연도(6)
 	private String makerName;						// 지역/제조사-지역 / 제조사(7)
 	private String refName;							// 자료출처-성분표출처(98)
 	private String servingSize;						// 1회 제공량-1회제공량(11)
