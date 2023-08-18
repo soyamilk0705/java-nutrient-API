@@ -13,14 +13,91 @@
 		]]>
 	</insert>
 	
-	<!--<select id="search">
+	
+	<select id="search" resultType="NutrientDTO" parameterType="map">
 		<![CDATA[
 			SELECT *
-			FROM nutrient
-			WHERE food_name	#{foodName}
-				research_year #{researchYear}
-				maker_name #{makerName}
-				food_code #{foodCode}
+			FROM (
+				SELECT *
+				FROM nutrient
+				WHERE food_name	 LIKE '%'||#{foodName, jdbcType=VARCHAR}||'%'
+				OR research_year LIKE '%'||#{researchYear, jdbcType=VARCHAR}||'%'
+				OR maker_name LIKE '%'||#{makerName, jdbcType=VARCHAR}||'%'
+				OR food_cd LIKE '%'||#{foodCode, jdbcType=VARCHAR}||'%'
+			)
+			WHERE ROWNUM >=#{startPage} AND ROWNUM <=#{endPage}
 		]]>
+	</select>
+	
+	<!--<select id="search" resultType="NutrientDTO" parameterType="map">
+		<![CDATA[
+			SELECT *
+			FROM (
+				SELECT *
+				FROM nutrient
+				WHERE 1 = 1
+				<if test="foodName != null">
+					OR food_name LIKE '%'||#{foodName}||'%'
+				</if>
+				<if test="researchYear != null">
+					OR research_year LIKE '%'||#{researchYear}||'%'
+				</if>
+				<if test="makerName != null">
+					OR maker_name LIKE '%'||#{makerName}||'%'
+				</if>
+				<if test="foodCode != null">
+					OR food_cd LIKE '%'||#{foodCode}||'%'
+				</if>
+			)
+			WHERE ROWNUM >=#{startPage} AND ROWNUM <=#{endPage}
+		]]>
+	</select>
+	-->
+	
+	<!--<select id="search" resultType="NutrientDTO" parameterType="map">
+	<![CDATA[
+		SELECT *
+		FROM (
+			SELECT a.*, ROWNUM rnum
+			FROM (
+				SELECT *
+				FROM nutrient
+				WHERE 1 = 1
+				<if test="foodName != null">
+					OR food_name LIKE '%'||#{foodName}||'%'
+				</if>
+				<if test="researchYear != null">
+					OR research_year LIKE '%'||#{researchYear}||'%'
+				</if>
+				<if test="makerName != null">
+					OR maker_name LIKE '%'||#{makerName}||'%'
+				</if>
+				<if test="foodCode != null">
+					OR food_cd LIKE '%'||#{foodCode}||'%'
+				</if>
+			) a
+			WHERE ROWNUM <= #{endPage}
+		)
+		WHERE rnum >= #{startPage}
+	]]>
+</select>-->
+	
+	<!--<select id="search" resultType="NutrientDTO" parameterType="map">
+		SELECT *
+		FROM nutrient
+		WHERE 1 = 1
+			<if test="foodName != null">
+				AND food_name LIKE '%'||#{foodName}||'%'
+			</if>
+			<if test="researchYear != null">
+				AND research_year LIKE '%'||#{researchYear}||'%'
+			</if>
+			<if test="makerName != null">
+				AND maker_name LIKE '%'||#{makerName}||'%'
+			</if>
+			<if test="foodCode != null">
+				AND food_cd LIKE '%'||#{foodCode}||'%'
+			</if>
 	</select>-->
+	
 </mapper>
